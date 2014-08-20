@@ -1,0 +1,11 @@
+<apex:component controller="PerfLogController">
+	<apex:attribute name="params" description="Comma separated list of params to include" type="String"/>
+	<apex:includeScript loadOnReady="true" value="{!$Resource.perf}"/>
+	<script>
+		function logPerformance(gMsg){
+			PerfLogController.printLog(gMsg, '{!$CurrentPage.url}', '{!$CurrentPage.parameters.id}', '{!params}', function(result){
+				console.log('page performance logged');
+			});
+		}
+	</script>
+</apex:component>
